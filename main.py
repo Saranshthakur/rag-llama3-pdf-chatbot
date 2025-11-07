@@ -56,6 +56,7 @@ if user_prompt:
     document_chain = create_stuff_documents_chain(llm, prompt)
     retriever = st.session_state.vectors.as_retriever()
     retrieval_chain = create_retrieval_chain(retriever, document_chain)
+    response = retrieval_chain.invoke({'input':user_prompt})
 
     st.write(response['answer'])
 ```
